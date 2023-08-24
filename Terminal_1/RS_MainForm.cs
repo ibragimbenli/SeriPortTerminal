@@ -1,0 +1,151 @@
+﻿using System;
+using System.IO;
+using System.IO.Ports;
+using System.Windows.Forms;
+
+namespace Terminal_1
+{
+    public partial class RS_MainForm : Form
+    {
+        private SerialPort serialPort;
+        public RS_MainForm()
+        {
+            InitializeComponent();
+
+            string[] availablePorts = SerialPort.GetPortNames();
+            serialPortComboBox.Items.AddRange(availablePorts);
+            if (availablePorts.Length <= 0) return;
+            serialPortComboBox.Text = availablePorts[0];
+            serialPort = new SerialPort();
+            serialPort.DataReceived += SerialPort_DataReceived;
+            serialPort.Parity = (Parity)Enum.Parse(typeof(Parity), comboParity.Text);
+            serialPort.StopBits = (StopBits)Enum.Parse(typeof(StopBits), comboStopBit.Text); ;
+            serialPort.DataBits = Convert.ToInt32(comboDataBit.Text);
+        }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            btnClose.Enabled = false;
+            btnOpen.Enabled = true;
+            btnSend.Enabled = false;
+        }
+
+        private void txtBoxSendData_TextChanged(object sender, EventArgs e)
+        {
+            txtBoxSendData.TextChanged -= txtBoxSendData_TextChanged;
+
+            string textWithoutSeparators = txtBoxSendData.Text.Replace("-", "");
+
+            string newText = InsertSeparators(textWithoutSeparators, 2, "-");
+
+            txtBoxSendData.Text = newText;
+
+            txtBoxSendData.SelectionStart = textWithoutSeparators.Length + (textWithoutSeparators.Length / 2);
+
+            txtBoxSendData.TextChanged += txtBoxSendData_TextChanged;
+        }
+
+        private string InsertSeparators(string input, int interval, string separator)
+        {
+            if (input.Length >= 22)
+                MessageBox.Show("En çok 11 karakter");
+            for (int i = interval; i < input.Length; i += interval + separator.Length)
+            {
+                input = input.Insert(i, separator);
+            }
+            return input;
+        }
+
+
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string receivedDatam = serialPort.ReadLine();
+
+            bool existing = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81");
+            bool NoExisting = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81 01");
+            var cont = receivedDatam[27].ToString() + receivedDatam[28].ToString();
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (existing == true && NoExisting == false && cont != "01")
+                {
+                    var date = DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond;
+                    var hexDataYaz = receivedDatam + " - " + date;
+                    File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz + Environment.NewLine);
+
+                    richTextBoxReceivedData.Text += receivedDatam + " " + Environment.NewLine;
+                }
+            });
+        }
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+
+            if (serialPort == null)
+            {
+                MessageBox.Show("Bağlanacak Cihaz Bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!serialPort.IsOpen)
+            {
+                serialPort.PortName = serialPortComboBox.SelectedItem.ToString();
+                try
+                {
+                    if (Convert.ToInt32(comboDataBit.Text).GetType() == typeof(string) || comboDataBit.Text == "")
+                    {
+                        MessageBox.Show("Lütfen bir sayısal Baud Değeri Giriniz", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        serialPort.BaudRate = int.Parse(comboBaudRate.Text); //Set your desired baud rate
+                        serialPort.Open();
+                        btnOpen.Enabled = false;
+                        btnClose.Enabled = true;
+                        btnSend.Enabled = true;
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message} Com Erişimi Reddetti!");
+                    return;
+                }
+            }
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (serialPort.IsOpen)
+            {
+                serialPort.Close();
+                btnOpen.Enabled = true;
+                btnClose.Enabled = false;
+                btnSend.Enabled = false;
+            }
+        }
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            if (serialPort.IsOpen)
+            {
+                serialPort.WriteLine(txtBoxSendData.Text);
+            }
+        }
+        private void txtBoxSendData_Click(object sender, EventArgs e)
+        {
+            txtBoxSendData.Text = string.Empty;
+        }
+        private void btnClean_Click(object sender, EventArgs e)
+        {
+            richTextBoxReceivedData.Text = string.Empty;
+        }
+
+        private void txtBoxSendData_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Backspace ve hexadecimal characters (0-9, A-F) izin verme durumu
+            if (!char.IsControl(e.KeyChar) && !Uri.IsHexDigit(e.KeyChar))
+            {
+                e.Handled = true; //hexdecimal değilse tuşa basamasın
+            }
+        }
+
+
+    }
+}
