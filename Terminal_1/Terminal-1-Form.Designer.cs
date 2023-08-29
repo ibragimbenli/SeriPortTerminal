@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtExistSearch = new System.Windows.Forms.TextBox();
+            this.txtExistSearch0 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,21 +48,26 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.serialPortComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtExistSearch2 = new System.Windows.Forms.TextBox();
+            this.txtExistSearch1 = new System.Windows.Forms.TextBox();
             this.btnConvert = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtNoExistSearch = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtExistSearch
+            // txtExistSearch0
             // 
-            this.txtExistSearch.Location = new System.Drawing.Point(16, 529);
-            this.txtExistSearch.Multiline = true;
-            this.txtExistSearch.Name = "txtExistSearch";
-            this.txtExistSearch.Size = new System.Drawing.Size(181, 27);
-            this.txtExistSearch.TabIndex = 8;
-            this.txtExistSearch.TextChanged += new System.EventHandler(this.txtExistSearch_TextChanged);
+            this.txtExistSearch0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtExistSearch0.Location = new System.Drawing.Point(16, 529);
+            this.txtExistSearch0.Multiline = true;
+            this.txtExistSearch0.Name = "txtExistSearch0";
+            this.txtExistSearch0.Size = new System.Drawing.Size(33, 27);
+            this.txtExistSearch0.TabIndex = 8;
+            this.txtExistSearch0.Text = "6";
+            this.txtExistSearch0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtExistSearch0.TextChanged += new System.EventHandler(this.txtExistSearch_TextChanged);
             // 
             // label6
             // 
@@ -285,9 +290,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtExistSearch2);
+            this.panel2.Controls.Add(this.txtExistSearch1);
             this.panel2.Controls.Add(this.btnConvert);
             this.panel2.Controls.Add(this.txtNoExistSearch);
-            this.panel2.Controls.Add(this.txtExistSearch);
+            this.panel2.Controls.Add(this.txtExistSearch0);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnOpen);
@@ -308,6 +315,28 @@
             this.panel2.Size = new System.Drawing.Size(229, 716);
             this.panel2.TabIndex = 10;
             // 
+            // txtExistSearch2
+            // 
+            this.txtExistSearch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtExistSearch2.Location = new System.Drawing.Point(93, 529);
+            this.txtExistSearch2.Multiline = true;
+            this.txtExistSearch2.Name = "txtExistSearch2";
+            this.txtExistSearch2.Size = new System.Drawing.Size(64, 27);
+            this.txtExistSearch2.TabIndex = 10;
+            this.txtExistSearch2.Text = "129";
+            this.txtExistSearch2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtExistSearch1
+            // 
+            this.txtExistSearch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtExistSearch1.Location = new System.Drawing.Point(54, 529);
+            this.txtExistSearch1.Multiline = true;
+            this.txtExistSearch1.Name = "txtExistSearch1";
+            this.txtExistSearch1.Size = new System.Drawing.Size(33, 27);
+            this.txtExistSearch1.TabIndex = 10;
+            this.txtExistSearch1.Text = "7";
+            this.txtExistSearch1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // btnConvert
             // 
             this.btnConvert.Location = new System.Drawing.Point(45, 619);
@@ -318,6 +347,18 @@
             this.btnConvert.UseVisualStyleBackColor = true;
             this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
             // 
+            // txtNoExistSearch
+            // 
+            this.txtNoExistSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtNoExistSearch.Location = new System.Drawing.Point(20, 586);
+            this.txtNoExistSearch.Multiline = true;
+            this.txtNoExistSearch.Name = "txtNoExistSearch";
+            this.txtNoExistSearch.Size = new System.Drawing.Size(33, 27);
+            this.txtNoExistSearch.TabIndex = 8;
+            this.txtNoExistSearch.Text = "1";
+            this.txtNoExistSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtNoExistSearch.TextAlignChanged += new System.EventHandler(this.txtNoExistSearch_TextChanged);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -327,15 +368,6 @@
             this.label7.Size = new System.Drawing.Size(208, 24);
             this.label7.TabIndex = 7;
             this.label7.Text = "Search Noexist Word";
-            // 
-            // txtNoExistSearch
-            // 
-            this.txtNoExistSearch.Location = new System.Drawing.Point(16, 586);
-            this.txtNoExistSearch.Multiline = true;
-            this.txtNoExistSearch.Name = "txtNoExistSearch";
-            this.txtNoExistSearch.Size = new System.Drawing.Size(181, 27);
-            this.txtNoExistSearch.TabIndex = 8;
-            this.txtNoExistSearch.TextAlignChanged += new System.EventHandler(this.txtNoExistSearch_TextChanged);
             // 
             // Terminal_1
             // 
@@ -357,7 +389,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtExistSearch;
+        private System.Windows.Forms.TextBox txtExistSearch0;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label label5;
@@ -378,7 +410,9 @@
         private System.Windows.Forms.ComboBox serialPortComboBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnConvert;
-        private System.Windows.Forms.TextBox txtNoExistSearch;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtExistSearch2;
+        private System.Windows.Forms.TextBox txtExistSearch1;
+        private System.Windows.Forms.TextBox txtNoExistSearch;
     }
 }

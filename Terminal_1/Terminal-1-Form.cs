@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
@@ -52,15 +53,15 @@ namespace Terminal_1
         {
             txtBoxSendData.TextChanged -= txtExistSearch_TextChanged;
 
-            string textWithoutSeparators = txtExistSearch.Text.Replace("-", "");
+            string textWithoutSeparators = txtExistSearch0.Text.Replace("-", "");
 
             //string newText = InsertSeparators(textWithoutSeparators, 2, "-");
 
             //txtExistSearch.Text = newText;
 
-            txtExistSearch.SelectionStart = textWithoutSeparators.Length + (textWithoutSeparators.Length / 2);
+            txtExistSearch0.SelectionStart = textWithoutSeparators.Length + (textWithoutSeparators.Length / 2);
 
-            txtExistSearch.TextChanged += txtExistSearch_TextChanged;
+            txtExistSearch0.TextChanged += txtExistSearch_TextChanged;
         }
         private void txtNoExistSearch_TextChanged(object sender, EventArgs e)
         {
@@ -100,133 +101,53 @@ namespace Terminal_1
 
             return bytes;
         }
-      
+
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+
         {
+            
             int bytesToRead = serialPort.BytesToRead;
-            //int bytesToReadd = serialPort.ReadByte();
+            while (bytesToRead < 7)
+            
+            {
+            
+                bytesToRead = serialPort.BytesToRead;
+                
+
+            }
+
+           
             byte[] buffer = new byte[bytesToRead];
             serialPort.Read(buffer, 0, bytesToRead);
-
-            string receivedData = Encoding.ASCII.GetString(buffer);
-
-            if (glbReceivedData.Length < 32)
-            {
-                glbReceivedData += receivedData;
-            }
-            else
-            {
-                if (glbReceivedData.Contains("06-07-81") && glbReceivedData.Contains("06-07-81-01") == false)
+            
+                var val1 = Convert.ToInt32(txtExistSearch0.Text);
+                var val2 = Convert.ToInt32(txtExistSearch1.Text);
+                var val3 = Convert.ToInt32(txtExistSearch2.Text);
+                var val4 = Convert.ToInt32(txtNoExistSearch.Text);
+            string Hexdata = "";
+               
+                if (buffer[0] == val1 && buffer[1] == val2 && buffer[2] == val3 && buffer[3] != val4)
                 {
-                    Invoke(new Action(() => richTextBoxReceivedData.Text += glbReceivedData));
-                    var date = DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond;
-                    var hexDataYaz = receivedData + " - " + date;
-
-                    File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz + Environment.NewLine);
+                    for (int i = 0; i < bytesToRead; i++)
+                    {
+                    Hexdata = Hexdata+String.Format("{0:X}", Convert.ToInt32(buffer[i]))+" ";
+                   
                 }
-                glbReceivedData = "";
+                Invoke(new Action(() => richTextBoxReceivedData.Text += Hexdata+Environment.NewLine));
+                var date = DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond;
+                var hexDataYaz = Hexdata + " - " + date;
+
+                File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz);
             }
-           
-            //bool existing = receivedData.Replace("-", " ").Trim().Contains("06 07 81");
-            //bool NoExisting = receivedData.Replace("-", " ").Trim().Contains(txtNoExistSearch.Text);
-            //if (receivedData.Length < 4) return;
-            ////var cont = receivedData[receivedData.Length - 4].ToString() + receivedData[receivedData.Length - 3].ToString();
-            //existing = true;
-            //if (existing)
-            //{
-
-            //}
-
-        
-
-            //}
-            #region Comments Codes
-            //string data0 = serialPort.ReadLine();
-
-            //var data1 = serialPort.ReadExisting();
-            //MessageBox.Show(data1);
-
-            //int data1 = serialPort.ReadByte();
-
-            ////byte[] asciiBytes = Encoding.ASCII.GetBytes(data1.ToString());
-            //string hex = String.Format("{0:X}", Convert.ToInt32(data1));
-            //this.Invoke((MethodInvoker)delegate
-            //{
-            //    richTextBoxReceivedData.Text += hex;
-            //});
-
-
-            //this.Invoke((MethodInvoker)delegate
-            //{
-            //    //byte[] asciiBytess = { Convert.ToByte(data1) }; //Yönet 1 
-            //    richTextBoxReceivedData.Text += asciiBytes[0]; //Yöntem 2
-            //});
-
-            //int[] dizi = new int[asciiBytes.Length + 1];
-
-            //for (int i = 0; i < asciiBytes.Length; i++)
-            //{
-            //    dizi[dizi.Length - 1] = hex[i];
-            //}
-
-            //this.Invoke((MethodInvoker)delegate
-            //{
-            //    foreach (int i in dizi)
-            //    {
-            //        richTextBoxReceivedData.Text = i.ToString();
-            //    }
-            //});
-
-
-            //var data4 = serialPort.ReadTo(data1);
-            //byte[] asciiBytes = Encoding.ASCII.GetBytes(data1);
-            //var data5 = serialPort.Read(asciiBytes, 0, 11);
-
-            //char[] data = receivedDatam.ToCharArray();
-
-            //byte[] binaryData = HexStringToByteArray(receivedDatam);
-
-            //byte[] gelenAscii = Encoding.ASCII.GetBytes(data);
-
-            //this.Invoke((MethodInvoker)delegate
-            //{
-            //    //foreach (var d in data1)
-            //{
-            //string hexx = String.Format("{0:X}", Convert.ToInt32(d));
-            ////var hex1 = Convert.ToInt32(d);
-            //string hex = Convert.ToString(hex1);
-            //richTextBoxReceivedData.Text += hex + " - ";
-            //richTextBoxReceivedData.Text += hexx + " - ";
-            //richTextBoxReceivedData.Text += d + " " + Environment.NewLine;
-            //}
-
-            //for (int i = 0; i < gelenAscii.Length; i++)
-            //{
-            //    richTextBoxReceivedData.Text += hex + " ";
-            //}
-
-            //});
-            //string hex = String.Format("{0:X}", Convert.ToInt32(receivedDatam));
-
-            //byte[] asciiBytes = Encoding.ASCII.GetBytes(asciiText);
-            //string hexString = BitConverter.ToString(asciiBytes).Replace("-", "");
-            //data = ser.readline().decode('utf-8').strip();
-            //bool existing = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81");
-            //bool NoExisting = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81 01");
-            //var cont = receivedDatam[receivedDatam.Length-4].ToString() + receivedDatam[receivedDatam.Length - 3].ToString();
-
-            //if (existing == true && NoExisting == false && cont != "01")
-            //{
-            //var date = DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond;
-            //var hexDataYaz = receivedDatam + " - " + date;
-            //File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz + Environment.NewLine); 
-            #endregion
+            File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", Environment.NewLine);
+            glbReceivedData = "";
+          
         }
 
         private void btnConvert_Click(object sender, EventArgs e)
         {
             //char[] texxten = txtSearch.Text.ToCharArray();
-            var data = txtExistSearch.Text;
+            var data = txtExistSearch0.Text;
 
             string hex = String.Format("{0:X}", Convert.ToInt32(data));
 
