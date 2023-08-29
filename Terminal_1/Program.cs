@@ -16,7 +16,7 @@ namespace Terminal_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RS_MainForm());
+            Application.Run(new Terminal_1());
         }
     }
 }

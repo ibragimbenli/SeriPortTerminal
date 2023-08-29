@@ -1,6 +1,6 @@
 ﻿namespace Terminal_1
 {
-    partial class SeriPort_MainForm
+    partial class Terminal_2
     {
         /// <summary>
         /// Required designer variable.
@@ -301,15 +301,15 @@
             this.panel2.Size = new System.Drawing.Size(229, 716);
             this.panel2.TabIndex = 12;
             // 
-            // SeriPort_MainForm
+            // Terminal_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 716);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "SeriPort_MainForm";
-            this.Text = "SeriPort_MainForm";
+            this.Name = "Terminal_2";
+            this.Text = "Sending";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

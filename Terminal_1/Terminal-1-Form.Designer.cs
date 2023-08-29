@@ -1,6 +1,6 @@
 ﻿namespace Terminal_1
 {
-    partial class RS_MainForm
+    partial class Terminal_1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtExistSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,27 +48,31 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.serialPortComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnConvert = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtNoExistSearch = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtSearch
+            // txtExistSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(16, 642);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(181, 27);
-            this.txtSearch.TabIndex = 8;
+            this.txtExistSearch.Location = new System.Drawing.Point(16, 529);
+            this.txtExistSearch.Multiline = true;
+            this.txtExistSearch.Name = "txtExistSearch";
+            this.txtExistSearch.Size = new System.Drawing.Size(181, 27);
+            this.txtExistSearch.TabIndex = 8;
+            this.txtExistSearch.TextChanged += new System.EventHandler(this.txtExistSearch_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(40, 604);
+            this.label6.Location = new System.Drawing.Point(12, 502);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 24);
+            this.label6.Size = new System.Drawing.Size(183, 24);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Search Word";
+            this.label6.Text = "Search Exist Word";
             // 
             // btnOpen
             // 
@@ -281,7 +285,10 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.btnConvert);
+            this.panel2.Controls.Add(this.txtNoExistSearch);
+            this.panel2.Controls.Add(this.txtExistSearch);
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnOpen);
             this.panel2.Controls.Add(this.label5);
@@ -301,15 +308,44 @@
             this.panel2.Size = new System.Drawing.Size(229, 716);
             this.panel2.TabIndex = 10;
             // 
-            // RS_MainForm
+            // btnConvert
+            // 
+            this.btnConvert.Location = new System.Drawing.Point(45, 619);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(112, 44);
+            this.btnConvert.TabIndex = 9;
+            this.btnConvert.Text = "btnConvert";
+            this.btnConvert.UseVisualStyleBackColor = true;
+            this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(7, 559);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(208, 24);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Search Noexist Word";
+            // 
+            // txtNoExistSearch
+            // 
+            this.txtNoExistSearch.Location = new System.Drawing.Point(16, 586);
+            this.txtNoExistSearch.Multiline = true;
+            this.txtNoExistSearch.Name = "txtNoExistSearch";
+            this.txtNoExistSearch.Size = new System.Drawing.Size(181, 27);
+            this.txtNoExistSearch.TabIndex = 8;
+            this.txtNoExistSearch.TextAlignChanged += new System.EventHandler(this.txtNoExistSearch_TextChanged);
+            // 
+            // Terminal_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 716);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "RS_MainForm";
-            this.Text = "RS_MainForm";
+            this.Name = "Terminal_1";
+            this.Text = "Recevied";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -321,7 +357,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtExistSearch;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label label5;
@@ -341,5 +377,8 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.ComboBox serialPortComboBox;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.TextBox txtNoExistSearch;
+        private System.Windows.Forms.Label label7;
     }
 }

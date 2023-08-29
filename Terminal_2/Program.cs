@@ -14,7 +14,7 @@ namespace Terminal_2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SeriPort_MainForm());
+            Application.Run(new Terminal_1.Terminal_2());
         }
     }
 }

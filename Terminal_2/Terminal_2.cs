@@ -1,21 +1,22 @@
 ﻿using System;
 using System.IO;
 using System.IO.Ports;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Terminal_1
 {
-    public partial class RS_MainForm : Form
+    public partial class Terminal_2 : Form
     {
         private SerialPort serialPort;
-        public RS_MainForm()
+        public Terminal_2()
         {
             InitializeComponent();
 
             string[] availablePorts = SerialPort.GetPortNames();
             serialPortComboBox.Items.AddRange(availablePorts);
             if (availablePorts.Length <= 0) return;
-            serialPortComboBox.Text = availablePorts[0];
+            serialPortComboBox.Text = availablePorts[availablePorts.Length - 1];
             serialPort = new SerialPort();
             serialPort.DataReceived += SerialPort_DataReceived;
             serialPort.Parity = (Parity)Enum.Parse(typeof(Parity), comboParity.Text);
@@ -55,14 +56,22 @@ namespace Terminal_1
             return input;
         }
 
-
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string receivedDatam = serialPort.ReadLine();
+            var data1 = serialPort.ReadByte();
+            var data2 = serialPort.ReadChar();
+            var data3 = serialPort.ReadExisting();
+            var data4 = serialPort.ReadTo(receivedDatam);
+            byte[] asciiBytes = Encoding.ASCII.GetBytes(receivedDatam);
+            var data5 = serialPort.Read(asciiBytes, 0, 11);
+
+
 
             bool existing = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81");
             bool NoExisting = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81 01");
-            var cont = receivedDatam[27].ToString() + receivedDatam[28].ToString();
+            if (receivedDatam.Length < 3) return;
+            var cont = receivedDatam[receivedDatam.Length - 4].ToString() + receivedDatam[receivedDatam.Length - 3].ToString();
 
             this.Invoke((MethodInvoker)delegate
             {
@@ -73,7 +82,7 @@ namespace Terminal_1
                     File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz + Environment.NewLine);
 
                     richTextBoxReceivedData.Text += receivedDatam + " " + Environment.NewLine;
-                }
+            }
             });
         }
         private void btnOpen_Click(object sender, EventArgs e)
@@ -125,7 +134,10 @@ namespace Terminal_1
         {
             if (serialPort.IsOpen)
             {
+                //byte[] asciiBytes = Encoding.ASCII.GetBytes(txtBoxSendData.Text);
+                //serialPort.WriteLine(asciiBytes.ToString());
                 serialPort.WriteLine(txtBoxSendData.Text);
+                richTextBoxReceivedData.Text = txtBoxSendData.Text +"\n";
             }
         }
         private void txtBoxSendData_Click(object sender, EventArgs e)
