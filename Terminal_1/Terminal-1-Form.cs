@@ -33,7 +33,6 @@ namespace Terminal_1
             btnOpen.Enabled = true;
             btnSend.Enabled = false;
         }
-
         private void txtBoxSendData_TextChanged(object sender, EventArgs e)
         {
             txtBoxSendData.TextChanged -= txtBoxSendData_TextChanged;
@@ -76,7 +75,6 @@ namespace Terminal_1
 
             txtNoExistSearch.TextChanged += txtNoExistSearch_TextChanged;
         }
-
         private string InsertSeparators(string input, int interval, string separator)
         {
             if (input.Length >= 22)
@@ -87,7 +85,6 @@ namespace Terminal_1
             }
             return input;
         }
-
         static byte[] HexStringToByteArray(string hex)
         {
             int length = hex.Length;
@@ -100,11 +97,10 @@ namespace Terminal_1
 
             return bytes;
         }
-
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             int DataCount = Convert.ToInt32(txtDataCount.Text);
-            
+
             int bytesToRead = serialPort.BytesToRead;
             while (bytesToRead < DataCount)
             {
@@ -137,17 +133,15 @@ namespace Terminal_1
         }
         private void btnConvert_Click(object sender, EventArgs e)
         {
-            //richTextBoxReceivedData.Text = "";
             //char[] texxten = txtSearch.Text.ToCharArray();
             var data = txtBoxSendData.Text;
-            data = data.Trim().Replace("-","");
+            data = data.Trim().Replace("-", "");
             string hex = String.Format("{0:X}", Convert.ToInt32(data));
 
-            richTextBoxReceivedData.Text += $"Klavyeden girilen sayı: '{data}' - HexaDecimal: '{hex}' \n";
+            richTextBoxReceivedData.Text += $"Sent Decimal: '{data}' - HexaDecimal: '{hex}' \n";
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
-
             if (serialPort == null)
             {
                 MessageBox.Show("Bağlanacak Cihaz Bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -208,7 +202,6 @@ namespace Terminal_1
         {
             richTextBoxReceivedData.Text = string.Empty;
         }
-
         private void txtBoxSendData_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Backspace ve hexadecimal characters (0-9, A-F) izin verme durumu
@@ -217,6 +210,5 @@ namespace Terminal_1
                 e.Handled = true; //hexdecimal değilse tuşa basamasın
             }
         }
-
     }
 }
