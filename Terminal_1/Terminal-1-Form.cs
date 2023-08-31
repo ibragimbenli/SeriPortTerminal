@@ -137,12 +137,13 @@ namespace Terminal_1
         }
         private void btnConvert_Click(object sender, EventArgs e)
         {
+            //richTextBoxReceivedData.Text = "";
             //char[] texxten = txtSearch.Text.ToCharArray();
-            var data = txtExistSearch0.Text;
-
+            var data = txtBoxSendData.Text;
+            data = data.Trim().Replace("-","");
             string hex = String.Format("{0:X}", Convert.ToInt32(data));
 
-            richTextBoxReceivedData.Text = hex;
+            richTextBoxReceivedData.Text += $"Klavyeden girilen sayı: '{data}' - HexaDecimal: '{hex}' \n";
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
