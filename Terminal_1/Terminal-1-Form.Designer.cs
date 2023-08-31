@@ -371,7 +371,6 @@
             this.txtNoExistSearch.TabIndex = 8;
             this.txtNoExistSearch.Text = "1";
             this.txtNoExistSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtNoExistSearch.TextAlignChanged += new System.EventHandler(this.txtNoExistSearch_TextChanged);
             // 
             // label7
             // 

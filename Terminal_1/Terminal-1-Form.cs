@@ -47,34 +47,6 @@ namespace Terminal_1
 
             txtBoxSendData.TextChanged += txtBoxSendData_TextChanged;
         }
-        //private void txtExistSearch_TextChanged(object sender, EventArgs e)
-        //{
-        //    txtBoxSendData.TextChanged -= txtExistSearch_TextChanged;
-
-        //    string textWithoutSeparators = txtExistSearch0.Text.Replace("-", "");
-
-        //    //string newText = InsertSeparators(textWithoutSeparators, 2, "-");
-
-        //    //txtExistSearch.Text = newText;
-
-        //    txtExistSearch0.SelectionStart = textWithoutSeparators.Length + (textWithoutSeparators.Length / 2);
-
-        //    txtExistSearch0.TextChanged += txtExistSearch_TextChanged;
-        //}
-        private void txtNoExistSearch_TextChanged(object sender, EventArgs e)
-        {
-            txtNoExistSearch.TextChanged -= txtNoExistSearch_TextChanged;
-
-            string textWithoutSeparators = txtNoExistSearch.Text.Replace("-", "");
-
-            string newText = InsertSeparators(textWithoutSeparators, 2, "-");
-
-            txtNoExistSearch.Text = newText;
-
-            txtNoExistSearch.SelectionStart = textWithoutSeparators.Length + (textWithoutSeparators.Length / 2);
-
-            txtNoExistSearch.TextChanged += txtNoExistSearch_TextChanged;
-        }
         private string InsertSeparators(string input, int interval, string separator)
         {
             if (input.Length >= 22)
