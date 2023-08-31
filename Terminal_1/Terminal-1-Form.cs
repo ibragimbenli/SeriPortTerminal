@@ -13,7 +13,6 @@ namespace Terminal_1
     public partial class Terminal_1 : Form
     {
         private SerialPort serialPort;
-        string glbReceivedData = "";
         public Terminal_1()
         {
             InitializeComponent();
@@ -103,47 +102,39 @@ namespace Terminal_1
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-
         {
+            int DataCount = Convert.ToInt32(txtDataCount.Text);
             
             int bytesToRead = serialPort.BytesToRead;
-            while (bytesToRead < 7)
-            
+            while (bytesToRead < DataCount)
             {
-            
                 bytesToRead = serialPort.BytesToRead;
-                
-
             }
 
-           
             byte[] buffer = new byte[bytesToRead];
             serialPort.Read(buffer, 0, bytesToRead);
-            
-                var val1 = Convert.ToInt32(txtExistSearch0.Text);
-                var val2 = Convert.ToInt32(txtExistSearch1.Text);
-                var val3 = Convert.ToInt32(txtExistSearch2.Text);
-                var val4 = Convert.ToInt32(txtNoExistSearch.Text);
+
+            var val1 = Convert.ToInt32(txtExistSearch0.Text);
+            var val2 = Convert.ToInt32(txtExistSearch1.Text);
+            var val3 = Convert.ToInt32(txtExistSearch2.Text);
+            var val4 = Convert.ToInt32(txtNoExistSearch.Text);
             string Hexdata = "";
-               
-                if (buffer[0] == val1 && buffer[1] == val2 && buffer[2] == val3 && buffer[3] != val4)
+
+            if (buffer[0] == val1 && buffer[1] == val2 && buffer[2] == val3 && buffer[3] != val4)
+            {
+                for (int i = 0; i < bytesToRead; i++)
                 {
-                    for (int i = 0; i < bytesToRead; i++)
-                    {
-                    Hexdata = Hexdata+String.Format("{0:X}", Convert.ToInt32(buffer[i]))+" ";
-                   
+                    Hexdata = Hexdata + String.Format("{0:X}", Convert.ToInt32(buffer[i])) + " ";
+
                 }
-                Invoke(new Action(() => richTextBoxReceivedData.Text += Hexdata+Environment.NewLine));
+                Invoke(new Action(() => richTextBoxReceivedData.Text += Hexdata + Environment.NewLine));
                 var date = DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond;
                 var hexDataYaz = Hexdata + " - " + date;
 
                 File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz);
             }
             File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", Environment.NewLine);
-            glbReceivedData = "";
-          
         }
-
         private void btnConvert_Click(object sender, EventArgs e)
         {
             //char[] texxten = txtSearch.Text.ToCharArray();

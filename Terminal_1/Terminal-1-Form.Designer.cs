@@ -48,11 +48,13 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.serialPortComboBox = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtDataCount = new System.Windows.Forms.TextBox();
             this.txtExistSearch2 = new System.Windows.Forms.TextBox();
             this.txtExistSearch1 = new System.Windows.Forms.TextBox();
             this.btnConvert = new System.Windows.Forms.Button();
             this.txtNoExistSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +84,7 @@
             // btnOpen
             // 
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnOpen.Location = new System.Drawing.Point(20, 336);
+            this.btnOpen.Location = new System.Drawing.Point(20, 357);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(177, 55);
             this.btnOpen.TabIndex = 5;
@@ -103,7 +105,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClose.Location = new System.Drawing.Point(20, 397);
+            this.btnClose.Location = new System.Drawing.Point(20, 418);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(177, 55);
             this.btnClose.TabIndex = 4;
@@ -169,9 +171,9 @@
             "57600",
             "74880",
             "115200"});
-            this.comboBaudRate.Location = new System.Drawing.Point(122, 252);
+            this.comboBaudRate.Location = new System.Drawing.Point(119, 252);
             this.comboBaudRate.Name = "comboBaudRate";
-            this.comboBaudRate.Size = new System.Drawing.Size(101, 32);
+            this.comboBaudRate.Size = new System.Drawing.Size(78, 32);
             this.comboBaudRate.TabIndex = 0;
             this.comboBaudRate.Text = "2400";
             // 
@@ -185,9 +187,9 @@
             "8",
             "9",
             "10"});
-            this.comboDataBit.Location = new System.Drawing.Point(122, 197);
+            this.comboDataBit.Location = new System.Drawing.Point(119, 197);
             this.comboDataBit.Name = "comboDataBit";
-            this.comboDataBit.Size = new System.Drawing.Size(101, 32);
+            this.comboDataBit.Size = new System.Drawing.Size(78, 32);
             this.comboDataBit.TabIndex = 0;
             this.comboDataBit.Text = "8";
             // 
@@ -199,9 +201,9 @@
             "One",
             "OnePointFive",
             "Two"});
-            this.comboStopBit.Location = new System.Drawing.Point(122, 141);
+            this.comboStopBit.Location = new System.Drawing.Point(119, 141);
             this.comboStopBit.Name = "comboStopBit";
-            this.comboStopBit.Size = new System.Drawing.Size(101, 32);
+            this.comboStopBit.Size = new System.Drawing.Size(78, 32);
             this.comboStopBit.TabIndex = 0;
             this.comboStopBit.Text = "One";
             // 
@@ -215,9 +217,9 @@
             "Even",
             "Mark",
             "Space"});
-            this.comboParity.Location = new System.Drawing.Point(122, 85);
+            this.comboParity.Location = new System.Drawing.Point(119, 85);
             this.comboParity.Name = "comboParity";
-            this.comboParity.Size = new System.Drawing.Size(101, 32);
+            this.comboParity.Size = new System.Drawing.Size(78, 32);
             this.comboParity.TabIndex = 0;
             this.comboParity.Text = "Mark";
             // 
@@ -281,7 +283,7 @@
             // 
             this.serialPortComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.serialPortComboBox.FormattingEnabled = true;
-            this.serialPortComboBox.Location = new System.Drawing.Point(122, 29);
+            this.serialPortComboBox.Location = new System.Drawing.Point(119, 29);
             this.serialPortComboBox.Name = "serialPortComboBox";
             this.serialPortComboBox.Size = new System.Drawing.Size(101, 32);
             this.serialPortComboBox.Sorted = true;
@@ -290,6 +292,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtDataCount);
             this.panel2.Controls.Add(this.txtExistSearch2);
             this.panel2.Controls.Add(this.txtExistSearch1);
             this.panel2.Controls.Add(this.btnConvert);
@@ -298,6 +301,7 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnOpen);
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.label4);
@@ -314,6 +318,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(229, 716);
             this.panel2.TabIndex = 10;
+            // 
+            // txtDataCount
+            // 
+            this.txtDataCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtDataCount.Location = new System.Drawing.Point(121, 306);
+            this.txtDataCount.Multiline = true;
+            this.txtDataCount.Name = "txtDataCount";
+            this.txtDataCount.Size = new System.Drawing.Size(76, 27);
+            this.txtDataCount.TabIndex = 10;
+            this.txtDataCount.Text = "11";
+            this.txtDataCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtExistSearch2
             // 
@@ -369,6 +384,16 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Search Noexist Word";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label8.Location = new System.Drawing.Point(7, 309);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 24);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Data Count";
+            // 
             // Terminal_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,5 +439,7 @@
         private System.Windows.Forms.TextBox txtExistSearch2;
         private System.Windows.Forms.TextBox txtExistSearch1;
         private System.Windows.Forms.TextBox txtNoExistSearch;
+        private System.Windows.Forms.TextBox txtDataCount;
+        private System.Windows.Forms.Label label8;
     }
 }
