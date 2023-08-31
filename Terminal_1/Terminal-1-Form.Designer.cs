@@ -65,11 +65,10 @@
             this.txtExistSearch0.Location = new System.Drawing.Point(16, 529);
             this.txtExistSearch0.Multiline = true;
             this.txtExistSearch0.Name = "txtExistSearch0";
-            this.txtExistSearch0.Size = new System.Drawing.Size(33, 27);
+            this.txtExistSearch0.Size = new System.Drawing.Size(53, 27);
             this.txtExistSearch0.TabIndex = 8;
             this.txtExistSearch0.Text = "6";
             this.txtExistSearch0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtExistSearch0.TextChanged += new System.EventHandler(this.txtExistSearch_TextChanged);
             // 
             // label6
             // 
@@ -226,7 +225,7 @@
             // btnClean
             // 
             this.btnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClean.Location = new System.Drawing.Point(8, 540);
+            this.btnClean.Location = new System.Drawing.Point(8, 608);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(538, 55);
             this.btnClean.TabIndex = 3;
@@ -251,7 +250,7 @@
             this.richTextBoxReceivedData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.richTextBoxReceivedData.Location = new System.Drawing.Point(8, 12);
             this.richTextBoxReceivedData.Name = "richTextBoxReceivedData";
-            this.richTextBoxReceivedData.Size = new System.Drawing.Size(538, 426);
+            this.richTextBoxReceivedData.Size = new System.Drawing.Size(538, 494);
             this.richTextBoxReceivedData.TabIndex = 1;
             this.richTextBoxReceivedData.Text = "";
             // 
@@ -259,7 +258,7 @@
             // 
             this.txtBoxSendData.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBoxSendData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtBoxSendData.Location = new System.Drawing.Point(8, 444);
+            this.txtBoxSendData.Location = new System.Drawing.Point(8, 512);
             this.txtBoxSendData.Name = "txtBoxSendData";
             this.txtBoxSendData.Size = new System.Drawing.Size(538, 29);
             this.txtBoxSendData.TabIndex = 2;
@@ -271,7 +270,7 @@
             // btnSend
             // 
             this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSend.Location = new System.Drawing.Point(8, 479);
+            this.btnSend.Location = new System.Drawing.Point(8, 547);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(538, 55);
             this.btnSend.TabIndex = 3;
@@ -333,10 +332,10 @@
             // txtExistSearch2
             // 
             this.txtExistSearch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtExistSearch2.Location = new System.Drawing.Point(93, 529);
+            this.txtExistSearch2.Location = new System.Drawing.Point(134, 529);
             this.txtExistSearch2.Multiline = true;
             this.txtExistSearch2.Name = "txtExistSearch2";
-            this.txtExistSearch2.Size = new System.Drawing.Size(64, 27);
+            this.txtExistSearch2.Size = new System.Drawing.Size(53, 27);
             this.txtExistSearch2.TabIndex = 10;
             this.txtExistSearch2.Text = "129";
             this.txtExistSearch2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -344,10 +343,10 @@
             // txtExistSearch1
             // 
             this.txtExistSearch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtExistSearch1.Location = new System.Drawing.Point(54, 529);
+            this.txtExistSearch1.Location = new System.Drawing.Point(75, 529);
             this.txtExistSearch1.Multiline = true;
             this.txtExistSearch1.Name = "txtExistSearch1";
-            this.txtExistSearch1.Size = new System.Drawing.Size(33, 27);
+            this.txtExistSearch1.Size = new System.Drawing.Size(53, 27);
             this.txtExistSearch1.TabIndex = 10;
             this.txtExistSearch1.Text = "7";
             this.txtExistSearch1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -365,10 +364,10 @@
             // txtNoExistSearch
             // 
             this.txtNoExistSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtNoExistSearch.Location = new System.Drawing.Point(20, 586);
+            this.txtNoExistSearch.Location = new System.Drawing.Point(75, 586);
             this.txtNoExistSearch.Multiline = true;
             this.txtNoExistSearch.Name = "txtNoExistSearch";
-            this.txtNoExistSearch.Size = new System.Drawing.Size(33, 27);
+            this.txtNoExistSearch.Size = new System.Drawing.Size(53, 27);
             this.txtNoExistSearch.TabIndex = 8;
             this.txtNoExistSearch.Text = "1";
             this.txtNoExistSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -402,7 +401,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "Terminal_1";
-            this.Text = "Recevied";
+            this.Text = "Terminal-1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

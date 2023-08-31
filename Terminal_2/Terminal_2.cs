@@ -29,7 +29,6 @@ namespace Terminal_1
             btnOpen.Enabled = true;
             btnSend.Enabled = false;
         }
-
         private void txtBoxSendData_TextChanged(object sender, EventArgs e)
         {
             txtBoxSendData.TextChanged -= txtBoxSendData_TextChanged;
@@ -58,32 +57,37 @@ namespace Terminal_1
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string receivedDatam = serialPort.ReadLine();
-            var data1 = serialPort.ReadByte();
-            var data2 = serialPort.ReadChar();
-            var data3 = serialPort.ReadExisting();
-            var data4 = serialPort.ReadTo(receivedDatam);
-            byte[] asciiBytes = Encoding.ASCII.GetBytes(receivedDatam);
-            var data5 = serialPort.Read(asciiBytes, 0, 11);
+            int DataCount = Convert.ToInt32(txtDataCount.Text);
 
-
-
-            bool existing = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81");
-            bool NoExisting = receivedDatam.Replace("-", " ").Trim().Contains("06 07 81 01");
-            if (receivedDatam.Length < 3) return;
-            var cont = receivedDatam[receivedDatam.Length - 4].ToString() + receivedDatam[receivedDatam.Length - 3].ToString();
-
-            this.Invoke((MethodInvoker)delegate
+            int bytesToRead = serialPort.BytesToRead;
+            while (bytesToRead < DataCount)
             {
-                if (existing == true && NoExisting == false && cont != "01")
-                {
-                    var date = DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond;
-                    var hexDataYaz = receivedDatam + " - " + date;
-                    File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz + Environment.NewLine);
-
-                    richTextBoxReceivedData.Text += receivedDatam + " " + Environment.NewLine;
+                bytesToRead = serialPort.BytesToRead;
             }
-            });
+
+            byte[] buffer = new byte[bytesToRead];
+            serialPort.Read(buffer, 0, bytesToRead);
+
+            var val1 = Convert.ToInt32(txtExistSearch0.Text);
+            var val2 = Convert.ToInt32(txtExistSearch1.Text);
+            var val3 = Convert.ToInt32(txtExistSearch2.Text);
+            var val4 = Convert.ToInt32(txtNoExistSearch.Text);
+            string Hexdata = "";
+
+            if (buffer[0] == val1 && buffer[1] == val2 && buffer[2] == val3 && buffer[3] != val4)
+            {
+                for (int i = 0; i < bytesToRead; i++)
+                {
+                    Hexdata = Hexdata + String.Format("{0:X}", Convert.ToInt32(buffer[i])) + " ";
+
+                }
+                Invoke(new Action(() => richTextBoxReceivedData.Text += Hexdata + Environment.NewLine));
+                var date = DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond;
+                var hexDataYaz = Hexdata + " - " + date;
+
+                File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", hexDataYaz);
+            }
+            File.AppendAllText(@"C:\Users\ibrahim.benli\Desktop\RS323Test.txt", Environment.NewLine);
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
@@ -112,13 +116,20 @@ namespace Terminal_1
                         btnSend.Enabled = true;
                     }
                 }
-
                 catch (Exception ex)
                 {
                     MessageBox.Show($"{ex.Message} Com Erişimi Reddetti!");
                     return;
                 }
             }
+        }
+        private void btnConvert_Click(object sender, EventArgs e)
+        {
+            var data = txtBoxSendData.Text;
+            data = data.Trim().Replace("-", "");
+            string hex = String.Format("{0:X}", Convert.ToInt32(data));
+
+            richTextBoxReceivedData.Text += $"Sent Decimal: '{data}' - HexaDecimal: '{hex}' \n";
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -137,7 +148,7 @@ namespace Terminal_1
                 //byte[] asciiBytes = Encoding.ASCII.GetBytes(txtBoxSendData.Text);
                 //serialPort.WriteLine(asciiBytes.ToString());
                 serialPort.WriteLine(txtBoxSendData.Text);
-                richTextBoxReceivedData.Text = txtBoxSendData.Text +"\n";
+                richTextBoxReceivedData.Text = txtBoxSendData.Text + "\n";
             }
         }
         private void txtBoxSendData_Click(object sender, EventArgs e)
@@ -157,7 +168,5 @@ namespace Terminal_1
                 e.Handled = true; //hexdecimal değilse tuşa basamasın
             }
         }
-
-
     }
 }

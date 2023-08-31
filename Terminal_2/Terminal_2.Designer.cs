@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -48,32 +46,23 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtExistSearch2 = new System.Windows.Forms.TextBox();
+            this.txtExistSearch1 = new System.Windows.Forms.TextBox();
+            this.btnConvert = new System.Windows.Forms.Button();
+            this.txtNoExistSearch = new System.Windows.Forms.TextBox();
+            this.txtExistSearch0 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDataCount = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(16, 642);
-            this.txtSearch.Multiline = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(181, 27);
-            this.txtSearch.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(40, 604);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 24);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Search Word";
-            // 
             // btnOpen
             // 
             this.btnOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnOpen.Location = new System.Drawing.Point(20, 336);
+            this.btnOpen.Location = new System.Drawing.Point(20, 387);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(177, 55);
             this.btnOpen.TabIndex = 5;
@@ -94,7 +83,7 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClose.Location = new System.Drawing.Point(20, 397);
+            this.btnClose.Location = new System.Drawing.Point(20, 448);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(177, 55);
             this.btnClose.TabIndex = 4;
@@ -146,7 +135,7 @@
             // 
             this.txtBoxSendData.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBoxSendData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtBoxSendData.Location = new System.Drawing.Point(8, 444);
+            this.txtBoxSendData.Location = new System.Drawing.Point(8, 530);
             this.txtBoxSendData.Name = "txtBoxSendData";
             this.txtBoxSendData.Size = new System.Drawing.Size(538, 29);
             this.txtBoxSendData.TabIndex = 2;
@@ -173,9 +162,9 @@
             "57600",
             "74880",
             "115200"});
-            this.comboBaudRate.Location = new System.Drawing.Point(122, 252);
+            this.comboBaudRate.Location = new System.Drawing.Point(121, 252);
             this.comboBaudRate.Name = "comboBaudRate";
-            this.comboBaudRate.Size = new System.Drawing.Size(101, 32);
+            this.comboBaudRate.Size = new System.Drawing.Size(76, 32);
             this.comboBaudRate.TabIndex = 0;
             this.comboBaudRate.Text = "2400";
             // 
@@ -189,9 +178,9 @@
             "8",
             "9",
             "10"});
-            this.comboDataBit.Location = new System.Drawing.Point(122, 197);
+            this.comboDataBit.Location = new System.Drawing.Point(121, 197);
             this.comboDataBit.Name = "comboDataBit";
-            this.comboDataBit.Size = new System.Drawing.Size(101, 32);
+            this.comboDataBit.Size = new System.Drawing.Size(76, 32);
             this.comboDataBit.TabIndex = 0;
             this.comboDataBit.Text = "8";
             // 
@@ -203,9 +192,9 @@
             "One",
             "OnePointFive",
             "Two"});
-            this.comboStopBit.Location = new System.Drawing.Point(122, 141);
+            this.comboStopBit.Location = new System.Drawing.Point(121, 141);
             this.comboStopBit.Name = "comboStopBit";
-            this.comboStopBit.Size = new System.Drawing.Size(101, 32);
+            this.comboStopBit.Size = new System.Drawing.Size(76, 32);
             this.comboStopBit.TabIndex = 0;
             this.comboStopBit.Text = "One";
             // 
@@ -219,9 +208,9 @@
             "Even",
             "Mark",
             "Space"});
-            this.comboParity.Location = new System.Drawing.Point(122, 85);
+            this.comboParity.Location = new System.Drawing.Point(121, 85);
             this.comboParity.Name = "comboParity";
-            this.comboParity.Size = new System.Drawing.Size(101, 32);
+            this.comboParity.Size = new System.Drawing.Size(76, 32);
             this.comboParity.TabIndex = 0;
             this.comboParity.Text = "Mark";
             // 
@@ -230,7 +219,7 @@
             this.richTextBoxReceivedData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.richTextBoxReceivedData.Location = new System.Drawing.Point(8, 6);
             this.richTextBoxReceivedData.Name = "richTextBoxReceivedData";
-            this.richTextBoxReceivedData.Size = new System.Drawing.Size(538, 426);
+            this.richTextBoxReceivedData.Size = new System.Drawing.Size(538, 518);
             this.richTextBoxReceivedData.TabIndex = 1;
             this.richTextBoxReceivedData.Text = "";
             // 
@@ -248,7 +237,7 @@
             // btnClean
             // 
             this.btnClean.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnClean.Location = new System.Drawing.Point(8, 540);
+            this.btnClean.Location = new System.Drawing.Point(8, 626);
             this.btnClean.Name = "btnClean";
             this.btnClean.Size = new System.Drawing.Size(538, 55);
             this.btnClean.TabIndex = 3;
@@ -259,7 +248,7 @@
             // btnSend
             // 
             this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSend.Location = new System.Drawing.Point(8, 479);
+            this.btnSend.Location = new System.Drawing.Point(8, 565);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(538, 55);
             this.btnSend.TabIndex = 3;
@@ -281,7 +270,14 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.txtDataCount);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.txtExistSearch2);
+            this.panel2.Controls.Add(this.txtExistSearch1);
+            this.panel2.Controls.Add(this.btnConvert);
+            this.panel2.Controls.Add(this.txtNoExistSearch);
+            this.panel2.Controls.Add(this.txtExistSearch0);
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnOpen);
             this.panel2.Controls.Add(this.label5);
@@ -301,6 +297,101 @@
             this.panel2.Size = new System.Drawing.Size(229, 716);
             this.panel2.TabIndex = 12;
             // 
+            // txtExistSearch2
+            // 
+            this.txtExistSearch2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtExistSearch2.Location = new System.Drawing.Point(138, 547);
+            this.txtExistSearch2.Multiline = true;
+            this.txtExistSearch2.Name = "txtExistSearch2";
+            this.txtExistSearch2.Size = new System.Drawing.Size(53, 27);
+            this.txtExistSearch2.TabIndex = 16;
+            this.txtExistSearch2.Text = "129";
+            this.txtExistSearch2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtExistSearch1
+            // 
+            this.txtExistSearch1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtExistSearch1.Location = new System.Drawing.Point(79, 547);
+            this.txtExistSearch1.Multiline = true;
+            this.txtExistSearch1.Name = "txtExistSearch1";
+            this.txtExistSearch1.Size = new System.Drawing.Size(53, 27);
+            this.txtExistSearch1.TabIndex = 17;
+            this.txtExistSearch1.Text = "7";
+            this.txtExistSearch1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnConvert
+            // 
+            this.btnConvert.Location = new System.Drawing.Point(49, 637);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(112, 44);
+            this.btnConvert.TabIndex = 15;
+            this.btnConvert.Text = "btnConvert";
+            this.btnConvert.UseVisualStyleBackColor = true;
+            this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
+            // 
+            // txtNoExistSearch
+            // 
+            this.txtNoExistSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtNoExistSearch.Location = new System.Drawing.Point(79, 604);
+            this.txtNoExistSearch.Multiline = true;
+            this.txtNoExistSearch.Name = "txtNoExistSearch";
+            this.txtNoExistSearch.Size = new System.Drawing.Size(53, 27);
+            this.txtNoExistSearch.TabIndex = 13;
+            this.txtNoExistSearch.Text = "1";
+            this.txtNoExistSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtExistSearch0
+            // 
+            this.txtExistSearch0.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtExistSearch0.Location = new System.Drawing.Point(20, 547);
+            this.txtExistSearch0.Multiline = true;
+            this.txtExistSearch0.Name = "txtExistSearch0";
+            this.txtExistSearch0.Size = new System.Drawing.Size(53, 27);
+            this.txtExistSearch0.TabIndex = 14;
+            this.txtExistSearch0.Text = "6";
+            this.txtExistSearch0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(11, 577);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(208, 24);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Search Noexist Word";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.Location = new System.Drawing.Point(16, 520);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(183, 24);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Search Exist Word";
+            // 
+            // txtDataCount
+            // 
+            this.txtDataCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtDataCount.Location = new System.Drawing.Point(121, 292);
+            this.txtDataCount.Multiline = true;
+            this.txtDataCount.Name = "txtDataCount";
+            this.txtDataCount.Size = new System.Drawing.Size(76, 27);
+            this.txtDataCount.TabIndex = 19;
+            this.txtDataCount.Text = "11";
+            this.txtDataCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label8.Location = new System.Drawing.Point(7, 295);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 24);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Data Count";
+            // 
             // Terminal_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,7 +400,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "Terminal_2";
-            this.Text = "Sending";
+            this.Text = "Terminal-2";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -320,9 +411,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnClose;
@@ -341,5 +429,14 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txtExistSearch2;
+        private System.Windows.Forms.TextBox txtExistSearch1;
+        private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.TextBox txtNoExistSearch;
+        private System.Windows.Forms.TextBox txtExistSearch0;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDataCount;
+        private System.Windows.Forms.Label label8;
     }
 }
